@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeVC: UIViewController {
 
     var data = [Task]()
-    let defaults = UserDefaults.standard
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private let tableView:UITableView = {
         let tableView = UITableView()
@@ -23,24 +24,26 @@ class HomeVC: UIViewController {
 
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for x in 0..<3{
-            let newTask = Task()
-            newTask.title = "\(x) New task"
-            data.append(newTask)
-        }
+        setupView()
 
 
-        loadData()
-        
+         loadData()
+    
+    }
+    
+    
+    
+    private func setupView(){
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         setupNavigationbar()
-        
     }
+    
     private func setupNavigationbar(){
         navigationItem.title = "Task"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.rectangle.on.rectangle"), style: .done, target: self, action: #selector(didTapAddButton))
@@ -54,8 +57,12 @@ class HomeVC: UIViewController {
             textFild.resignFirstResponder()
             
             guard let todo = textFild.text, !todo.isEmpty else {  return }
-             let newTodo = Task()
+            
+        
+            let newTodo = Task(context: self.context)
             newTodo.title = todo
+            newTodo.done = false
+            
             self.data.append(newTodo)
             self.saveData()
             
@@ -104,42 +111,45 @@ extension HomeVC:UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        data[indexPath.row].done = !data[indexPath.row].done
-        DispatchQueue.main.async {
-            tableView.reloadData()
 
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        context.delete(data[indexPath.row])
+        data.remove(at: indexPath.row)
+        
+        //data[indexPath.row].done = !data[indexPath.row].done
+       
+        saveData()
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
+    
+    
     func saveData(){
-        
         let encoder = PropertyListEncoder()
         do {
-            let datafile = try encoder.encode(self.data)
-            try datafile.write(to:self.dataFilePath!)
+            try context.save()
         }catch{
             print(error.localizedDescription)
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-
     }
     
     
     func loadData(){
-        if let dataArray = try? Data(contentsOf: dataFilePath!){
-            let decoder = PropertyListDecoder()
-            do {
-            data =  try decoder.decode([Task].self, from: dataArray)
-            }
-            catch{
-                print(error.localizedDescription)
-            }
+        let request :NSFetchRequest<Task> = Task.fetchRequest()
+        do{
+          data =  try context.fetch(request)
+        }catch{
+            print(error.localizedDescription)
         }
+        
     }
 }
+
+
 
