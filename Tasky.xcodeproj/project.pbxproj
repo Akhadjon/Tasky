@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		9F0CF7C6250947A1001B6783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CF7C5250947A1001B6783 /* AppDelegate.swift */; };
-		9F0CF7CA250947A1001B6783 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CF7C9250947A1001B6783 /* HomeVC.swift */; };
 		9F0CF7CF250947A2001B6783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0CF7CE250947A2001B6783 /* Assets.xcassets */; };
 		9F0CF7D2250947A2001B6783 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F0CF7D0250947A2001B6783 /* LaunchScreen.storyboard */; };
 		9F0CF7E1250A52ED001B6783 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CF7DF250A52ED001B6783 /* DataModel.xcdatamodeld */; };
+		9F0CF829250A8D65001B6783 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CF828250A8D65001B6783 /* CategoryViewController.swift */; };
+		9F0CF82D250A9555001B6783 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CF82C250A9555001B6783 /* SettingViewController.swift */; };
+		9F5BB297250AC42700C946BA /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5BB296250AC42700C946BA /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9F0CF7C2250947A1001B6783 /* Tasky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tasky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F0CF7C5250947A1001B6783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F0CF7C9250947A1001B6783 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		9F0CF7CE250947A2001B6783 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F0CF7D1250947A2001B6783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F0CF7D3250947A2001B6783 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F0CF7E0250A52ED001B6783 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9F0CF828250A8D65001B6783 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		9F0CF82C250A9555001B6783 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		9F5BB296250AC42700C946BA /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +87,9 @@
 		9F0CF7DC25094957001B6783 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9F0CF7C9250947A1001B6783 /* HomeVC.swift */,
+				9F0CF82C250A9555001B6783 /* SettingViewController.swift */,
+				9F0CF828250A8D65001B6783 /* CategoryViewController.swift */,
+				9F5BB296250AC42700C946BA /* ItemViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -158,9 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F0CF7CA250947A1001B6783 /* HomeVC.swift in Sources */,
+				9F0CF82D250A9555001B6783 /* SettingViewController.swift in Sources */,
+				9F0CF829250A8D65001B6783 /* CategoryViewController.swift in Sources */,
 				9F0CF7C6250947A1001B6783 /* AppDelegate.swift in Sources */,
 				9F0CF7E1250A52ED001B6783 /* DataModel.xcdatamodeld in Sources */,
+				9F5BB297250AC42700C946BA /* ItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
